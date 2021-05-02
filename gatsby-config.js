@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: "moms-blog",
@@ -6,17 +8,23 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "74mcZt-1DSebEucoT7CGKWIMOqUP_VnUbF2Ad-dfIjA",
-        spaceId: "1jpfhiwzjjjy",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
       },
     },
+    "@contentful/gatsby-transformer-contentful-richtext",
     "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {},
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "G-SJPKHG2B59",
       },
     },
+    "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
   ],

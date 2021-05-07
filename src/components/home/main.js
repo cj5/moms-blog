@@ -1,14 +1,22 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 import styleVar from '../styles/variables'
-// import Hero from './hero'
+import styleMixin from '../styles/mixins'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
+const FlexGrid = styled.div`
+  ${styleMixin.flexGrid(3, '30px')}
+`
 
 const postStyle = {
-  flex: `0 0 32%`,
+  position: `relative`,
   border: `1px solid ${styleVar.color_1}`,
+  maxHeight: `500px`,
+  overflow: `hidden`,
 }
 
-const img = {
+const imgStyle = {
   objectFit: `cover`,
   width: `100%`,
   height: `250px`,
@@ -17,7 +25,7 @@ const img = {
 const Main = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulBlogPost {
+      allContentfulBlogPost(sort: {fields: [createdAt], order: DESC}) {
         edges {
           node {
             createdAt(formatString: "MMMM D, YYYY")
@@ -30,30 +38,45 @@ const Main = () => {
             post {
               raw
             }
+            slug
           }
         }
       }
     }
   `)
 
+  let richText = []
+  data.allContentfulBlogPost.edges.map((item) => {
+    const data = JSON.parse(item.node.post.raw)
+    const value = documentToReactComponents(data)
+    // const length = 200
+    // let trimmedValue
+    // if (value.length > length) {
+    //   trimmedValue = value.substr(0, length - 3) + '...'
+    // } else {
+    //   trimmedValue = value.substr(0, length)
+    // }
+    richText.push(value)
+  })
+
   return (
-    <main className="mt-12">
-      {/* <Hero /> */}
+    <main className="mt-20 mb-32">
       <div className="contain">
-        <div className="flex justify-between">
+        <FlexGrid>
           {data.allContentfulBlogPost.edges.map((item, i) => (
             <div key={i} style={postStyle}>
               <div>
-                <img src={item.node.image.file.url} style={img} />
+                <img src={item.node.image.file.url} style={imgStyle} alt="" />
                 <div className="p-4">
                   <p className="fz-2xs">{item.node.createdAt}</p>
-                  <h3 className="heading fz-lg pt-2">{item.node.title}</h3>
-                  {/* <p>{item.node.post.raw}</p> */}
+                  <h3 className="heading fz-lg mt-2 mb-4">{item.node.title}</h3>
+                  {richText[i]}
                 </div>
               </div>
+              <div className="absolute bottom-0 w-full h-5 bg-white"></div>
             </div>
           ))}
-        </div>
+        </FlexGrid>
       </div>
     </main>
   )

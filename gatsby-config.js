@@ -12,7 +12,6 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
       },
     },
-    "@contentful/gatsby-transformer-contentful-richtext",
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-web-font-loader",

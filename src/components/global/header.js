@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import styleVar from '../styles/variables'
 import styleMixin from '../styles/mixins'
-import { FaFacebookF } from '@react-icons/all-files/fa/FaFacebookF';
-import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
+import { FaFacebookF } from '@react-icons/all-files/fa/FaFacebookF'
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 
 const standInUrl = 'https://chrisstack.co'
 
@@ -24,6 +24,8 @@ const data_navMenu = [
 ]
 
 const NavMenu = styled.ul`
+  display: flex;
+  justify-content: center;
   height: 100%;
   li {
     display: flex;
@@ -33,12 +35,15 @@ const NavMenu = styled.ul`
     border-left: 1px solid ${styleVar.color_1};
     &:last-of-type {
       border-right: 1px solid ${styleVar.color_1};
-      margin-right: 20px;
+      margin-right: 30px;
     }
   }
   a {
+    display: flex;
+    align-items: center;
     ${styleMixin.fz_sm}
-    padding: 15px 50px;
+    height: 100%;
+    padding: 0 60px;
     &:hover {
       background-color: #eee;
     }
@@ -81,14 +86,14 @@ const Header = () => {
   `)
   return (
     <header className="">
-      <div style={BorderBottom}>
-        <div className="contain mx-auto max-w-3xl">
-          <div className="flex justify-between items-center">
-            <h1 className="heading fz-md">{data.allContentfulHeader.edges[0].node.heading1}</h1>
-            <nav className="flex items-center">
-              <NavMenu className="flex content-center">
+      <div style={BorderBottom} className="fixed top-0 bg-white w-full h-20 z-10">
+        <div className="mx-auto px-5 max-w-4xl h-full">
+          <div className="flex justify-between items-center w-full h-full">
+            <h1 className="heading fz-lg">{data.allContentfulHeader.edges[0].node.heading1}</h1>
+            <nav className="flex items-center h-full">
+              <NavMenu>
                 {data_navMenu.map((item, i) => (
-                  <li key={i}><a href={item.url} className="text-link">{item.text}</a></li>
+                  <li key={i}><a href={item.url} className="text-link"><span>{item.text}</span></a></li>
                 ))}
               </NavMenu>
               <NavMenuSocial>
@@ -99,9 +104,9 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div style={BorderBottom}>
+      <div style={BorderBottom} className="mt-20">
         <div className="contain mx-auto">
-          <h2 className="heading text-center fz-2xl py-4">{data.allContentfulHeader.edges[0].node.heading2}</h2>
+          <h2 className="heading text-center fz-2xl py-8">{data.allContentfulHeader.edges[0].node.heading2}</h2>
         </div>
       </div>
     </header>

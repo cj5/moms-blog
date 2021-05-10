@@ -30,6 +30,7 @@
     "gatsby-plugin-styled-components": "^4.4.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-contentful": "^5.4.0",
+    "lodash": "^4.17.21",
     "postcss": "^8.2.13",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

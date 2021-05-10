@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import styleVar from '../styles/variables'
 import styleMixin from '../styles/mixins'
@@ -12,7 +12,7 @@ const FlexGrid = styled.div`
 const postStyle = {
   position: `relative`,
   border: `1px solid ${styleVar.color_1}`,
-  maxHeight: `500px`,
+  maxHeight: `443px`,
   overflow: `hidden`,
 }
 
@@ -64,17 +64,17 @@ const Main = () => {
       <div className="contain">
         <FlexGrid>
           {data.allContentfulBlogPost.edges.map((item, i) => (
-            <div key={i} style={postStyle}>
+            <Link key={i} style={postStyle} to={item.node.slug}>
               <div>
                 <img src={item.node.image.file.url} style={imgStyle} alt="" />
-                <div className="p-4">
-                  <p className="fz-2xs">{item.node.createdAt}</p>
+                <div className="p-4 fz-xs">
+                  <p className="heading-sm">{item.node.createdAt}</p>
                   <h3 className="heading fz-lg mt-2 mb-4">{item.node.title}</h3>
                   {richText[i]}
                 </div>
               </div>
               <div className="absolute bottom-0 w-full h-5 bg-white"></div>
-            </div>
+            </Link>
           ))}
         </FlexGrid>
       </div>

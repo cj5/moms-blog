@@ -5,16 +5,17 @@ exports.createPages = async function ({ actions, graphql }) {
         edges {
           node {
             slug
+            title
           }
         }
       }
     }
   `)
-  data.allMarkdownRemark.edges.forEach(edge => {
-    const slug = edge.node.fields.slug
+  data.allContentfulBlogPost.edges.forEach(edge => {
+    const slug = edge.node.slug
     actions.createPage({
       path: slug,
-      component: require.resolve(`./src/templates/blog-post.js`),
+      component: require.resolve(`./src/templates/blog-post-contentful.js`),
       context: { slug: slug },
     })
   })

@@ -5,8 +5,13 @@ import styleMixin from '../styles/mixins'
 const GlobalStyles = createGlobalStyle`
   body {
     font-family: ${styleVar.fontMain};
+    font-size: 18px;
     line-height: 1.2;
     color: ${styleVar.color_1};
+  }
+
+  .heading-sm {
+    ${styleMixin.fz_2xs}
   }
 
   .heading {
@@ -39,6 +44,11 @@ const GlobalStyles = createGlobalStyle`
     @media (min-width: ${styleVar.bpXl + 'px'}) {
       max-width: ${styleVar.bpXl + 'px'};
     }
+  }
+
+  .mxw-lg {
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .fz-2xl { ${styleMixin.fz_2xl} }

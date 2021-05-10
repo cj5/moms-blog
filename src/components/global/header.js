@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import styleVar from '../styles/variables'
 import styleMixin from '../styles/mixins'
@@ -11,15 +11,15 @@ const standInUrl = 'https://chrisstack.co'
 const data_navMenu = [
   {
     'text': 'Blog',
-    'url': standInUrl,
+    'url': '/',
   },
   {
     'text': 'About',
-    'url': standInUrl,
+    'url': '/about',
   },
   {
     'text': 'Contact',
-    'url': standInUrl,
+    'url': '/contact',
   },
 ]
 
@@ -89,11 +89,17 @@ const Header = () => {
       <div style={BorderBottom} className="fixed top-0 bg-white w-full h-20 z-10">
         <div className="mx-auto px-5 max-w-4xl h-full">
           <div className="flex justify-between items-center w-full h-full">
-            <h1 className="heading fz-lg">{data.allContentfulHeader.edges[0].node.heading1}</h1>
+            <h1 className="heading fz-lg">
+              <Link to="/">
+                {data.allContentfulHeader.edges[0].node.heading1}
+              </Link>
+            </h1>
             <nav className="flex items-center h-full">
               <NavMenu>
                 {data_navMenu.map((item, i) => (
-                  <li key={i}><a href={item.url} className="text-link"><span>{item.text}</span></a></li>
+                  <li key={i}>
+                    <Link to={item.url} className="text-link"><span>{item.text}</span></Link>
+                  </li>
                 ))}
               </NavMenu>
               <NavMenuSocial>

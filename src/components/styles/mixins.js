@@ -2,6 +2,7 @@ const styleMixin = {
   transition: `
     transition: 0.3s all ease-in-out;
   `,
+
   fz_2xl: `font-size: 60px;`,
   fz_xl: `font-size: 36px;`,
   fz_lg: `font-size: 30px;`,
@@ -28,7 +29,7 @@ const styleMixin = {
         }
       }`
     )
-  }
+  },
 }
 
 export default styleMixin

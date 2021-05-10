@@ -1,15 +1,12 @@
-import * as React from 'react'
-import GlobalStyles from '../components/global/styles'
-import Header from '../components/global/header'
+import React from 'react'
+import Layout from '../components/layout'
 import Main from '../components/home/main'
 
 const IndexPage = () => {
   return (
-    <>
-      <GlobalStyles />
-      <Header />
+    <Layout>
       <Main />
-    </>
+    </Layout>
   )
 }
 

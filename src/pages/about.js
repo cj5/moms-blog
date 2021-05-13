@@ -4,7 +4,11 @@ import Layout from '../components/layout'
 const AboutPage = () => {
   return (
     <Layout>
-      <h2>About page</h2>
+      <main className="py-10">
+        <div className="contain">
+          <h2 className="heading fz-xl">About page</h2>
+        </div>
+      </main>
     </Layout>
   )
 }

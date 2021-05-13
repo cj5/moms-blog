@@ -1,3 +1,5 @@
-— Display rich text
+— Remove nested <p> in blog post pages
 
-— Dynamic blog pages
+X Display rich text
+
+X Dynamic blog pages

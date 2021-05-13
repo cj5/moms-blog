@@ -44,6 +44,7 @@ const NavMenu = styled.ul`
     ${styleMixin.fz_sm}
     height: 100%;
     padding: 0 60px;
+    ${styleMixin.transition}
     &:hover {
       background-color: #eee;
     }
@@ -98,7 +99,7 @@ const Header = () => {
               <NavMenu>
                 {data_navMenu.map((item, i) => (
                   <li key={i}>
-                    <Link to={item.url} className="text-link"><span>{item.text}</span></Link>
+                    <Link to={item.url}><span>{item.text}</span></Link>
                   </li>
                 ))}
               </NavMenu>

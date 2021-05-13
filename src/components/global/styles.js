@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: ${styleVar.fontMain};
     font-size: 18px;
-    line-height: 1.2;
+    line-height: 1.3;
     color: ${styleVar.color_1};
   }
 
@@ -17,13 +17,20 @@ const GlobalStyles = createGlobalStyle`
   .heading {
     font-family: ${styleVar.fontHeading};
     text-transform: uppercase;
+    line-height: 1.1;
   }
 
-  .text-link {
-    ${styleMixin.fz_md}
+  .page_blog a {
     ${styleMixin.transition}
     &:hover {
-      color: ${styleVar.color_1_hov};
+      box-shadow: 4px 4px 6px #ccc;
+    }
+  }
+
+  .page_blog-post a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
     }
   }
 

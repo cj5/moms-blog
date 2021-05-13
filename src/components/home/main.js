@@ -12,14 +12,15 @@ const FlexGrid = styled.div`
 const postStyle = {
   position: `relative`,
   border: `1px solid ${styleVar.color_1}`,
-  maxHeight: `443px`,
+  maxHeight: `455px`,
   overflow: `hidden`,
+  textDecoration: `none`,
 }
 
 const imgStyle = {
   objectFit: `cover`,
   width: `100%`,
-  height: `250px`,
+  height: `261px`,
 }
 
 const Main = () => {
@@ -60,7 +61,7 @@ const Main = () => {
   })
 
   return (
-    <main className="mt-20 mb-32">
+    <main className="page_blog mt-20 mb-32">
       <div className="contain">
         <FlexGrid>
           {data.allContentfulBlogPost.edges.map((item, i) => (
@@ -69,11 +70,11 @@ const Main = () => {
                 <img src={item.node.image.file.url} style={imgStyle} alt="" />
                 <div className="p-4 fz-xs">
                   <p className="heading-sm">{item.node.createdAt}</p>
-                  <h3 className="heading fz-lg mt-2 mb-4">{item.node.title}</h3>
+                  <h3 className="heading fz-lg mt-1 mb-4">{item.node.title}</h3>
                   {richText[i]}
                 </div>
               </div>
-              <div className="absolute bottom-0 w-full h-5 bg-white"></div>
+              <div className="cover absolute bottom-0 w-full h-5 bg-white"></div>
             </Link>
           ))}
         </FlexGrid>
